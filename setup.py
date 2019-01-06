@@ -1,8 +1,13 @@
-from setuptools import find_packages, setup, Command
+import subprocess
+import sys
 from pathlib import Path
+from shutil import rmtree
+
+from setuptools import Command, find_packages, setup
+
 # Package meta-data.
 
-NAME = 'get-version'
+NAME = 'get-the-version'
 DESCRIPTION = 'Get the version of so many things.'
 URL = 'https://github.com/duyixian1234/get_version'
 EMAIL = 'duyixian1234@qq.com'
@@ -15,6 +20,10 @@ REQUIRED = [
 ]
 
 here = Path(__file__).cwd()
+
+with open(here / 'README.rst', encoding='utf-8') as f:
+    long_description = '\n' + f.read()
+
 
 class UploadCommand(Command):
     """Support setup.py upload."""
@@ -36,28 +45,29 @@ class UploadCommand(Command):
     def run(self):
         try:
             self.status('Removing previous builds…')
-            rmtree(os.path.join(here, 'dist'))
+            rmtree(here / 'dist')
         except OSError:
             pass
 
         self.status('Building Source and Wheel (universal) distribution…')
-        os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
+        subprocess.call('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
         self.status('Uploading the package to PyPi via Twine…')
-        os.system('twine upload dist/*')
+        subprocess.call('twine upload dist/*')
         sys.exit()
+
 
 setup(
     name=NAME,
     version='0.1.0',
     description=DESCRIPTION,
-    long_description='',
+    long_description=long_description,
     author=AUTHOR,
     author_email=EMAIL,
     url=URL,
-    packages=find_packages(exclude=('tests',)),
+    packages=find_packages(exclude=('tests', )),
     entry_points={
-         'console_scripts': ['get-version=get_version.__main__:main'],
-     },
+        'console_scripts': ['get-version=get_version.__main__:main'],
+    },
     install_requires=REQUIRED,
     include_package_data=True,
     license='MIT',
