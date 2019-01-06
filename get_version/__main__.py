@@ -1,6 +1,8 @@
-import click
 import sys
 from subprocess import getstatusoutput
+
+import click
+
 from .versions import version_dict
 
 
@@ -11,13 +13,13 @@ def get_version(command):
         click.echo('Not support for {}.'.format(command))
         sys.exit(0)
 
-    click.echo('The version info of {} is:'.format(command))
     status, output = getstatusoutput('{} {}'.format(command, version_dict[command]))
 
     if status:
         click.echo(output)
         sys.exit(status)
     else:
+        click.echo('The version info of {} is:'.format(command))
         click.echo(output)
         click.echo('From command "{} {}"'.format(command, version_dict[command]))
 
