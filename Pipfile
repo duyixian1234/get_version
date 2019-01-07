@@ -13,6 +13,12 @@ twine = "*"
 yapf = "*"
 pytest = "*"
 pytest-pythonpath = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+tests = "pipenv run pytest tests -svv --cov=get_version --cov-report=xml --cov-report=html"
+report = "open htmlcov/index.html"
+lint = "pipenv run flake8"

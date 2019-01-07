@@ -28,9 +28,9 @@ def get_version(command):
         click.echo('From command "{} {}"'.format(command, version_dict[command]))
 
 
-def main():
+def main():  # pragma: no cover
     get_version()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

@@ -1,5 +1,9 @@
 {
-    "python.pythonPath": "C:\\Users\\duyix\\.virtualenvs\\get_version-sOaNjrJQ\\Scripts\\python.exe",
+    "python.pythonPath": "/Users/yixian/.local/share/virtualenvs/get_version-1USITg1Y/bin/python",
     "python.formatting.provider": "yapf",
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "python.unitTest.pyTestArgs": [],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true
 }
