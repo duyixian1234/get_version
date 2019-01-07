@@ -9,6 +9,10 @@ from .versions import version_dict
 @click.command()
 @click.argument('command')
 def get_version(command):
+    """Get the version of so many things.\n
+    Supported tools:\n
+      'python', 'python3', 'pip', 'node', 'npm', 'yarn', 'java', 'mvn', 'gradle', 'gcc', 'clang', 'go'
+    """
     if command not in version_dict:
         click.echo('Not support for {}.'.format(command))
         sys.exit(0)
