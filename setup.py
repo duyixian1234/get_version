@@ -1,5 +1,4 @@
 import os
-import subprocess
 import sys
 from pathlib import Path
 from shutil import rmtree
@@ -51,7 +50,7 @@ class UploadCommand(Command):
             pass
 
         self.status('Building Source and Wheel (universal) distribution…')
-        os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
+        os.system('{0} setup.py sdist bdist_wheel'.format(sys.executable))
         self.status('Uploading the package to PyPi via Twine…')
         os.system('twine upload dist/*')
         sys.exit()
@@ -59,7 +58,7 @@ class UploadCommand(Command):
 
 setup(
     name=NAME,
-    version='0.1.1',
+    version='0.1.2',
     description=DESCRIPTION,
     long_description=long_description,
     author=AUTHOR,
