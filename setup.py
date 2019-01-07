@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -50,9 +51,9 @@ class UploadCommand(Command):
             pass
 
         self.status('Building Source and Wheel (universal) distribution…')
-        subprocess.call('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
+        os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
         self.status('Uploading the package to PyPi via Twine…')
-        subprocess.call('twine upload dist/*')
+        os.system('twine upload dist/*')
         sys.exit()
 
 
