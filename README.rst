@@ -1,7 +1,7 @@
-pipsource
+get-the-version
 ---------
 
-manage source of pipenv projects
+get the version of so many things.
 
 Use
 ---
